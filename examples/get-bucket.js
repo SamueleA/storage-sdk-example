@@ -13,6 +13,6 @@ const getBucket = () => new Promise((resolve, reject) => {
   });
 });
 
-getBucket().then((bucket) => { console.log('bucket:', bucket) });
+// getBucket().then((bucket) => { console.log('bucket:', bucket) });
 
 module.exports = getBucket;
