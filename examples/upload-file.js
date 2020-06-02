@@ -22,8 +22,13 @@ fs.readFile(filePath, (err, data) => {
     ACL: 'public-read',
   };
   const request = s3.putObject(params);
-  request.send();
-
+  request.on('httpHeaders', (statusCode, headers) => {
+    const ipfsHash = headers['x-fleek-ipfs-hash'];
+    console.log('ipfs hash:', ipfsHash);
+    // Do stuff with ifps hash....
+    const ipfsHashV0 = headers['x-fleek-ipfs-hash-v0'];
+    // Do stuff with the short v0 ipfs hash... (appropriate for storing on blockchains)
+  }).send();
 })
 
 
